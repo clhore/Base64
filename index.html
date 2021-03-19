@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b64</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/swich.css">
+    <link rel="stylesheet" href="css/swich-dia-noche/dia-noche.css">
+    <script src="https://kit.fontawesome.com/a000e16ea0.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.4.5/jscolor.min.js"></script>
+	<script src="https://unpkg.com/brain.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/IA-color-bagraud/I.A..js"></script>
+    <script src="js/dia-noche/dia-noche.js"></script>
+</head>
+<body id="body">
+    <section id="fullpage">  
+        <div class="section">
+          <b id="info" onclick="disappearFullpage()">Volver...</b>
+                <div id="time-circle-dia-noche" class="time-circle">
+                        <div class="sun"></div>
+                        <div class="moon">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="stars">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="water"></div>
+                    </div>
+                <div id="intro-text">
+                    <h1 id="title-day">day</h1>
+                    <h1 id="title-night">night</h1>
+                    </div>
+        <label class="switch">
+            <input type="checkbox" id="swich-input" onclick="diaNoche()">
+            <div class="slider round"></div>
+        </label>
+              </div>
+    </section>
+    <section id="section-content.bottom">
+        <article class="content-bottom">
+            <div id="content-opciones" class="class-main">
+                <i id="text-options" class="bottom-opciones">Opciones</i>
+                <ul class="menusimple">
+                    <li class="li">
+                        <span>Texto/Base64</span>
+                        <label class="switch">
+                            <input type="checkbox" id="swich-1">
+                            <div class="slider round"></div>
+                        </label> 
+                    </li>
+                    <li class="li">
+                        <span>Base64/Texto</span>
+                        <label class="switch">
+                            <input type="checkbox" id="swich-2">
+                            <div class="slider round"></div>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div class="class-clear">
+                    <a id="clear-textarea-icon" onclick="clearTextarea()">
+                        <i class="fas fa-broom"></i>
+                    </a>
+            </div>
+            <div class="class-diaNoche">
+                <i class="fas fa-adjust" onclick="visibleDiaNoche()"></i>
+            </div>
+        </article>
+    </section>
+    <section id="content-resultado">
+        <aside>
+            <article class="content-barra-comfiguracion">
+                <div class="box-barra-comfiguracion">
+                    <div class="content-color">
+                        <i class="imput-type-color"><input id="color-background" data-jscolor="", onInput="colorBagrand((this.jscolor))" value="#212122"></i>
+                        <i id="color-background-body" class="fab fa-elementor" style="font-size: 28px; vertical-align: -20%; color: #96dfac"></i>
+                        <i><input id="cambio-color-background" type="checkbox" class="botton-aplicar-color"></i>
+                    </div>
+                </div>
+                <div class="box-barra-comfiguracion">
+                    <div class="content-color">
+                        <i class="imput-type-color"><input type="color" id="color-clear" value="#bf6eb2"></i>
+                        <i id="color-background-clear" class="fas fa-broom" style="font-size: 24px; vertical-align: -20%;"></i>
+                        <i><button id="cambio-color-clear" onclick="colorClear()" class="botton-aplicar-color">Aplicar</button></i>
+                    </div>
+                </div>
+                <div class="box-barra-comfiguracion">
+                    <div class="content-color">
+                        <i class="imput-type-color"><input type="color" id="color-options" value="#C93662"></i>
+                        <i id="color-background-options" class="fas fa-cog" style="font-size: 28px; vertical-align: -20%;"></i>
+                        <i><button onclick="colorOptions()" class="botton-aplicar-color">Aplicar</button></i>
+                    </div>
+                </div>
+<!----------------------------------------------------------------------------------->
+                <div id="content-bottom-mas">
+                    <bottom id="bottom-mas" onclick="mostraMas()">más</bottom>
+                </div>                 
+
+        <div id="mostrar-mas">
+                <div class="box-barra-comfiguracion">
+                    <div class="content-color">
+                        <i class="imput-type-color"><input type="color" id="color-textarea" value="#bf6eb2"></i>
+                        <i id="color-background-textarea" class="far fa-comment-alt" style="font-size: 28px; vertical-align: -20%; color:#fff"></i>
+                        <i><button id="cambio-color-clear" onclick="colorTextarea()" class="botton-aplicar-color">Aplicar</button></i>
+                    </div>
+                </div>
+                <div class="box-barra-comfiguracion">
+                    <div class="content-color">
+                        <i class="imput-type-color"><input type="color" id="color-content-textarea" value="#C93662"></i>
+                        <i id="color-background-content-textarea" class="fa fa-edit" style="font-size: 24px; vertical-align: -20%; color: #d3f7a9"></i>
+                        <i><button onclick="colorTextareaArticle()" class="botton-aplicar-color">Aplicar</button></i>
+                    </div>
+                </div>
+<!----------IMG_Bagraud---------------------->
+                <div class="box-barra-comfiguracion">
+                    <div class="content-color">
+                        <botton onclick="bodyBackgroundIMG()">IMG</botton>
+                        <i class="imput-type-text"><input id="body-IMG" type="text"></i>
+                    </div>
+                </div>
+<!-------------------------------->
+                <div class="box-barra-comfiguracion">
+                    <div class="content-color">
+                        <a id="imput-radius-textarea">5px</a>
+                        <i class="imput-type-number"><input id="border-radius-textarea" onchange="borderRadiusTextarea()" type="range" min="0" max="100"></i>
+                    </div>
+                </div>
+        </div>
+                <div id="content-bottom-menos">
+                    <bottom id="bottom-menos" onclick="mostraMenos()">
+                        <i class="fas fa-chevron-up"></i>
+                    </bottom>
+                </div>
+<!----------------------------------------------------------------------------------->
+            </article>    
+<!---Reset--->
+            <article class="content-barra-reset">
+                <a id="botton-reset" onclick="resetColor()">Reiniciar</a>
+                    <a id="clear-textarea-icon-reset" onclick="clearTextarea()">
+                        <i class="fas fa-broom"></i>
+                    </a>
+            </article>
+<!---Reset_Close--->
+        </aside>
+        <article class="content-resultado-textarea">
+            <div id="content-textarea-1" class="content-textarea">
+                <textarea onkeyup="encodeText()" name="impute" id="input" cols="30" rows="10"></textarea>
+                <div class="content-textarea-bottom">
+                    <botton onclick="heightTextTop()">
+                        <i class="fas fa-arrow-alt-circle-up"></i>
+                    </botton>
+                    <botton onclick="heightTextBotton()">
+                        <i class="fas fa-arrow-alt-circle-down"></i>
+                    </botton>
+                </div>
+            </div>
+            <div id="content-textarea-2" class="content-textarea">
+                <textarea name="oupute" id="demo" cols="30" rows="10"></textarea>
+                <div class="content-textarea-bottom">
+                    <botton onclick="heightTextTop2()">
+                        <i class="fas fa-arrow-alt-circle-up"></i>
+                    </botton>
+                    <botton onclick="heightTextBotton2()">
+                        <i class="fas fa-arrow-alt-circle-down"></i>
+                    </botton>
+                </div>
+            </div>
+        </article>
+    </section>
+</body>
+</html>
